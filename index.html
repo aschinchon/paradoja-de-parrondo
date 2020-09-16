@@ -1872,7 +1872,11 @@ ggplot(datos, aes(x = rondas, y = ganancia_promedio_final)) +
 </div>
 <div id="recapitulación" class="section level2">
 <h2>5. Recapitulación</h2>
-<p>Con este experimento hemos visto cosas importantes de R, destacando sobre todo las distintas maneras que hay de iterar: <code>for</code>, <code>replicate</code>, <code>apply</code> y <code>accumulate</code>.</p>
+<p>Con este experimento hemos visto cosas importantes de R, destacando sobre todo las distintas maneras que hay de iterar: <code>for</code>, <code>replicate</code> y <code>apply</code>.</p>
+<p>Hay una manera más concisa de hacer el bucle <code>for</code> del principio, utilizando la función <code>accumulate</code> del paquete <code>purrr</code>. Esta función aplica secuencialmente una función de 2 argumentos a los elementos de un vector. Cada aplicación de la función utiliza el resultado de la aplicación anterior como primer argumento (o el valor inicial en la iteración 1). El segundo argumento es el siguiente valor del vector. Los resultados de cada aplicación se devuelven en una lista o vector si es posible. El siguiente código es equivalente al resultado del bucle que hicimos al principio para simular la evolución de una partida de 2000 rondas:</p>
+<pre class="r"><code>library(purrr)
+ganancia &lt;- accumulate(1:2000, ~.x + ifelse(runif(1) &lt; 0.495, 1, -1), 
+                     .init=100)</code></pre>
 <p>También hemos utilizado <code>ggplot2</code>, una de las librerías más importantes de R para visualización de datos.</p>
 <p>Si te ha gustado este experimento, puedes probar con el <a href="https://es.wikipedia.org/wiki/Problema_de_Monty_Hall">problema de Monty Hall</a>, otro resultado contraintuitivo que te gustará comprobar con tus propios ojos.</p>
 </div>

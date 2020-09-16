@@ -407,7 +407,17 @@ Una elección al azar ha convertido dos juegos desfavorables en otro favorable. 
 
 ## 5. Recapitulación
 
-Con este experimento hemos visto cosas importantes de R, destacando sobre todo las distintas maneras que hay de iterar: `for`, `replicate`, `apply` y `accumulate`.
+Con este experimento hemos visto cosas importantes de R, destacando sobre todo las distintas maneras que hay de iterar: `for`, `replicate` y `apply`.
+
+Hay una manera más concisa de hacer el bucle `for` del principio, utilizando la función `accumulate` del paquete `purrr`. Esta función aplica secuencialmente una función de 2 argumentos a los elementos de un vector. Cada aplicación de la función utiliza el resultado de la aplicación anterior como primer argumento (o el valor inicial en la iteración 1). El segundo argumento es el siguiente valor del vector. Los resultados de cada aplicación se devuelven en una lista o vector si es posible. El siguiente código es equivalente al resultado del bucle que hicimos al principio para simular la evolución de una partida de 2000 rondas:
+
+```{r, eval = FALSE}
+library(purrr)
+ganancia <- accumulate(1:2000, ~.x + ifelse(runif(1) < 0.495, 1, -1), 
+                     .init=100)
+
+```
+
 
 También hemos utilizado `ggplot2`, una de las librerías más importantes de R para visualización de datos.
 

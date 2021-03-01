@@ -1,7 +1,7 @@
 ---
 title: "La Paradoja de Parrondo"
 author: "Antonio Sánchez Chinchón"
-date: "EncuentRo online R-hispano 19/9/2020"
+date: "2/3/2020"
 output:
   html_document:
     css: img/base.css
@@ -26,8 +26,6 @@ output:
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = TRUE) 
 ```
-
-[<img src="./img/jornadas-con-r-hispano-u-tad-web.jpg" width="500">]()
 
 ## 1. De qué va este taller
 
